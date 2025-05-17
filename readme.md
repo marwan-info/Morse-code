@@ -33,6 +33,27 @@ Implemented using:
 
 ---
 
+## 🔧 Hardware Specifications
+
+### ✅ STM32 "Blue Pill" Development Board  
+**MCU:** STM32F103C8T6 (ARM Cortex-M3, 72 MHz)
+
+This project uses the STM32 Blue Pill board to implement Morse code transmission and reception via GPIO and IR, under FreeRTOS.
+
+| **Feature**          | **Usage in Project**                                           |
+|----------------------|----------------------------------------------------------------|
+| **Core**             | (Single-core) ARM Cortex-M3 @ 72 MHz – runs FreeRTOS tasks     |
+| **GPIO**             | Used for buttons (dot/dash), LEDs, IR TX/RX                    |
+| **Timers (SysTick)** | Used by FreeRTOS for task timing and delays                    |
+| **SRAM**             | 20 KB – stores stack and task data                             |
+| **Flash**            | 64 KB – holds the compiled firmware                            |
+| **IR Communication** | GPIO-based IR send/receive without UART                        |
+| **FreeRTOS**         | Manages concurrent Sender and Receiver tasks                   |
+| **CMSIS**            | Used as the RTOS abstraction and startup layer                 |
+| **CubeMX (HAL)**     | Used to generate initialization and HAL drivers                |
+| **Debugger**         | Compatible with ST-Link v2 over SWD                            |
+
+
 ## 🧠 Features
 
 - **Debounced Button Input** for stable transmission
@@ -102,6 +123,32 @@ Implemented using:
 - Extend project to support **wireless long-distance IR** transmission.
 
 ---
+
+## 📖 Technical Concepts Used
+
+### 🧵 RTOS (Real-Time Operating System)
+
+**FreeRTOS** is an open-source RTOS used to manage multiple tasks concurrently. It offers:
+- Preemptive or cooperative multitasking
+- Task prioritization
+- Deterministic timing (ideal for real-time control)
+
+**In this project**, FreeRTOS runs two concurrent tasks:
+- `SenderTask` handles button inputs and transmits IR signals.
+- `ReceiverTask` samples the IR receiver and processes the signal.
+
+### 🧠 CMSIS (Cortex Microcontroller Software Interface Standard)
+
+**CMSIS** is a hardware abstraction layer for ARM Cortex-M cores provided by ARM. It includes:
+- Core access headers and startup code
+- Interfaces for RTOS integration
+- Standard APIs for peripheral drivers
+
+**In this project**, CMSIS ensures consistent access to hardware registers and RTOS threads using:
+```c
+#include "cmsis_os.h"
+```
+
 
 ## 🧾 License
 
