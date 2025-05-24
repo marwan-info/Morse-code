@@ -156,14 +156,5 @@ This project is licensed under the terms described in the LICENSE file provided 
 
 ---
 
-## 📚 References
 
-- [FreeRTOS Official Documentation](https://www.freertos.org/)
-- [STM32 HAL Library Guide](https://www.st.com/en/embedded-software/stm32cubefw.html)
-- [Infrared Communication Basics](https://www.electronics-tutorials.ws/blog/infrared-ir-communication.html)
-- [Morse Code Standard](https://en.wikipedia.org/wiki/Morse_code)
-- [STM32CubeMX Documentation](https://www.st.com/en/development-tools/stm32cubemx.html)
-
----
-
-> Developed as part of a real-time embedded systems learning project.
+> Developed as part of a real-time embedded systems learning project under development 😊
